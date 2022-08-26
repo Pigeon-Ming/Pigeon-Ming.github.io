@@ -1,0 +1,3 @@
+test
+This is a test for "Check for Update" function.
+I'm so exciting.
