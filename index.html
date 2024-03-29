@@ -8,9 +8,6 @@
  <body > 
     
   <h1>文章列表</h1>
-    <label>网址：</label>
-    <input class="url" placeholder="请输入要访问的网址"></input>
-    <button class="getPostsBtn">获取列表</button>
     <ul class="list-group">
         <li class="list-group-item"></li>
     </ul>
@@ -24,14 +21,13 @@
   <p >自由 平等 公正 法制</p> 
   <p >爱国 敬业 诚信 友善</p> 
   <hr > 
-  <p >(C)Pigeon_Ming 2023 - 该站点正在迁移，<a href="http://pigeonming.top/">前往新站点</a>。</p> 
+  <p >(C)Pigeon_Ming 2024 - 该站点正在迁移，<a href="http://pigeonming.top/">前往新站点</a>。</p> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
 
-        document.querySelector('.getPostsBtn').addEventListener('click', () => {
-            let control = document.querySelector('.url')
+        let control = document.querySelector('.url')
             axios({
-                url: control.value + '/wp-json/wp/v2/posts',
+                url:'http://pigeonming.top/index.php/wp-json/wp/v2/posts',
             }).then(result => {
                 console.log(result)
                 let list = result.data
@@ -50,7 +46,6 @@
                 console.log(theLi)
                 document.querySelector('.user-list-group').innerHTML = theLi
             })
-        })
     </script>
   
  </body>
