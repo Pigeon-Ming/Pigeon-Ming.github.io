@@ -7,33 +7,16 @@
  </head> 
  <body > 
     
-  <h1 > 
-    <div style="width:50px; height:50px; border-radius:100%; overflow:hidden; " >
-        <img src="https:\\Pigeon-Ming.github.io\Assets\1624506725427.jpg" height="50" width="50" alt="">
-    </div>
-    Pigeon_Ming 的个人主页</h1> 
-  <a  href="https://pigeon-ming.github.io/"><button >主页</button></a> 
-  <a  href="https://space.bilibili.com/29955831"><button >Bili主页</button></a> 
-  <a href="https://pigeon-ming.github.io/Supports/"><button>帮助中心</button></a>
-  <a href="https://pigeon-ming.github.io/Docs/"><button>文档中心</button></a>
-  <hr > 
-  <p >欢迎来到Pigeon_Ming的个人主页</p> 
-  <h1>该网站正在迁移到新站点：<a href="http://pigeon_ming.jsppc.asia/">前往新版网站</a></h1>
-  <h4>当然，你也可以继续浏览本站点，但本站点的内容可能已过时。</h4>
-  <hr > 
-  <h2>PlanetMusicPlayer</h2>
-  <p>一款超棒的UWP本地播放器！</p>
-  <a  href="https://pigeon-ming.github.io/DownloadPage/PlanetMusicPlayerWinui2.html">了解详情 ＞</a> 
-  <hr>
-  <h2>JCode</h2>
-  <p>Windows端的JigsawOS IDE。</p>
-  <a  href="http://pigeon_ming.jsppc.asia/index.php/jigsawos/devcenter/jcode">了解详情 ＞</a> 
-  <hr>
-  <h2>JigsawOS</h2>
-  <p>基于HariboteOS开发的操作系统。</p>
-  <a  href="http://pigeonming.top/index.php/jigsawos">了解详情 ＞</a> 
-  <hr > 
-  <a  href="https://pigeon-ming.github.io/AllMyWorks.html">更多砍掉的项目</a> 
+  <h1>文章列表</h1>
+    <label>网址：</label>
+    <input class="url" placeholder="请输入要访问的网址"></input>
+    <button class="getPostsBtn">获取列表</button>
+    <ul class="list-group">
+        <li class="list-group-item"></li>
+    </ul>
+    <ul class="user-list-group">
+        <li class="user-list-group-item"></li>
+    </ul>
   <hr > 
   <p>——社会注意核心价值观——</p>
   <p></p>
@@ -42,5 +25,33 @@
   <p >爱国 敬业 诚信 友善</p> 
   <hr > 
   <p >(C)Pigeon_Ming 2023 - 该站点正在迁移，<a href="http://pigeonming.top/">前往新站点</a>。</p> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        document.querySelector('.getPostsBtn').addEventListener('click', () => {
+            let control = document.querySelector('.url')
+            axios({
+                url: control.value + '/wp-json/wp/v2/posts',
+            }).then(result => {
+                console.log(result)
+                let list = result.data
+                console.log(list)
+                let theLi = list.map(content => `<li class="list-group-item"><a href="${content.link}">${content.title.rendered}</a></li>`).join('')
+                console.log(theLi)
+                document.querySelector('.list-group').innerHTML = theLi
+            })
+            axios({
+                url: control.value + '/wp-json/wp/v2/users',
+            }).then(result => {
+                console.log(result)
+                let list = result.data
+                console.log(list)
+                let theLi = list.map(content => `<li class="user-list-group-item"><a href="${content.link}">${content.name}</a></li>`).join('')
+                console.log(theLi)
+                document.querySelector('.user-list-group').innerHTML = theLi
+            })
+        })
+    </script>
+  
  </body>
 </html>
