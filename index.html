@@ -23,11 +23,11 @@
   <p >自由 平等 公正 法制</p> 
   <p >爱国 敬业 诚信 友善</p> 
   <hr > 
-  <p >(C)Pigeon_Ming 2024 - 该站点正在迁移，<a href="http://pigeonming.top/">前往新站点</a>。</p> 
+  <p >(C)Pigeon_Ming 2025 - 该站点已迁移，<a href="http://pigeonming.top/">前往新站点</a>。</p> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
             axios({
-                url:'/pigeonming.top/index.php/wp-json/wp/v2/posts',
+                url:'http://pigeonming.top/index.php/wp-json/wp/v2/posts',
             }).then(result => {
                 console.log(result)
                 let list = result.data
@@ -37,7 +37,7 @@
                 document.querySelector('.list-group').innerHTML = theLi
             })
             axios({
-                url: '//pigeonming.top/index.php/wp-json/wp/v2/posts',
+                url: 'http://pigeonming.top/index.php/wp-json/wp/v2/posts',
             }).then(result => {
                 console.log(result)
                 let list = result.data
